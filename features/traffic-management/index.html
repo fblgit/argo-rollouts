@@ -8,11 +8,16 @@
       
       
       
+        <link rel="canonical" href="https://argo-rollouts.readthedocs.io/features/traffic-management/">
       
-        <link rel="canonical" href="https://argoproj.github.io/argo-rollouts/features/traffic-management/">
+      
+        <link rel="prev" href="../controller-metrics/">
+      
+      
+        <link rel="next" href="ambassador/">
       
       <link rel="icon" href="../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-7.2.6">
+      <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-9.1.18">
     
     
       
@@ -20,32 +25,44 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.802231af.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.26e3688c.min.css">
       
         
-        <link rel="stylesheet" href="../../assets/stylesheets/palette.3f5d1f46.min.css">
-        
-          
-          
-          <meta name="theme-color" content="#009485">
-        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ecc896b0.min.css">
       
+      
+
     
     
     
       
+        
         
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Work+Sans:300,400,400i,700%7C&display=fallback">
-        <style>:root{--md-text-font-family:"Work Sans";--md-code-font-family:""}</style>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Work+Sans:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Work Sans";--md-code-font:"Roboto Mono"}</style>
       
     
     
+      <link rel="stylesheet" href="../../assets/versions.css">
     
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
+  
 
 
+  
+  
+
+
+  <script id="__analytics">function __md_analytics(){function n(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],n("js",new Date),n("config","G-5Z1VTPDL73"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){this.value&&n("event","search",{search_term:this.value})}),document$.subscribe(function(){var a=document.forms.feedback;if(void 0!==a)for(var e of a.querySelectorAll("[type=submit]"))e.addEventListener("click",function(e){e.preventDefault();var t=document.location.pathname,e=this.getAttribute("data-md-value");n("event","feedback",{page:t,data:e}),a.firstElementChild.disabled=!0;e=a.querySelector(".md-feedback__note [data-md-value='"+e+"']");e&&(e.hidden=!1)}),a.hidden=!1}),location$.subscribe(function(e){n("config","G-5Z1VTPDL73",{page_path:e.pathname})})});var e=document.createElement("script");e.async=!0,e.src="https://www.googletagmanager.com/gtag/js?id=G-5Z1VTPDL73",document.getElementById("__analytics").insertAdjacentElement("afterEnd",e)}</script>
+
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
     
     
   </head>
@@ -53,13 +70,16 @@
   
     
     
+      
     
     
     
-    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="teal" data-md-color-accent="">
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="indigo">
   
     
-    <script>function __prefix(e){return new URL("../..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
@@ -76,7 +96,12 @@
       
     </div>
     
-      <header class="md-header" data-md-component="header">
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
     <a href="../.." title="Argo Rollouts - Kubernetes Progressive Delivery Controller" class="md-header__button md-logo" aria-label="Argo Rollouts - Kubernetes Progressive Delivery Controller" data-md-component="logo">
       
@@ -84,7 +109,7 @@
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
     </label>
     <div class="md-header__title" data-md-component="header-title">
       <div class="md-header__ellipsis">
@@ -103,25 +128,50 @@
       </div>
     </div>
     
+      
+        <form class="md-header__option" data-md-component="palette">
+          
+            
+            
+            
+            <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+            
+              <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6zm0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4zM7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+              </label>
+            
+          
+            
+            
+            
+            <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
+            
+              <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3Z"/></svg>
+              </label>
+            
+          
+        </form>
+      
+    
     
     
       <label class="md-header__button md-icon" for="__search">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
       </label>
-      
-<div class="md-search" data-md-component="search" role="dialog">
+      <div class="md-search" data-md-component="search" role="dialog">
   <label class="md-search__overlay" for="__search"></label>
   <div class="md-search__inner" role="search">
     <form class="md-search__form" name="search">
       <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
       <label class="md-search__icon md-icon" for="__search">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
       </label>
       <nav class="md-search__options" aria-label="Search">
         
-        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
         </button>
       </nav>
       
@@ -132,7 +182,7 @@
           <div class="md-search-result__meta">
             Initializing search
           </div>
-          <ol class="md-search-result__list"></ol>
+          <ol class="md-search-result__list" role="presentation"></ol>
         </div>
       </div>
     </div>
@@ -141,11 +191,10 @@
     
     
       <div class="md-header__source">
-        
-<a href="https://github.com/argoproj/argo-rollouts/" title="Go to repository" class="md-source" data-md-component="source">
+        <a href="https://github.com/argoproj/argo-rollouts" title="Go to repository" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
   </div>
   <div class="md-source__repository">
     GitHub
@@ -154,11 +203,14 @@
       </div>
     
   </nav>
+  
 </header>
     
     <div class="md-container" data-md-component="container">
       
       
+        
+          
         
       
       <main class="md-main" data-md-component="main">
@@ -183,11 +235,10 @@
   </label>
   
     <div class="md-nav__source">
-      
-<a href="https://github.com/argoproj/argo-rollouts/" title="Go to repository" class="md-source" data-md-component="source">
+      <a href="https://github.com/argoproj/argo-rollouts" title="Go to repository" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
   </div>
   <div class="md-source__repository">
     GitHub
@@ -268,13 +319,18 @@
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
       
-      <label class="md-nav__link" for="__nav_5">
-        Getting Started
-        <span class="md-nav__icon md-icon"></span>
-      </label>
-      <nav class="md-nav" aria-label="Getting Started" data-md-level="1">
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+          Getting Started
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
         <label class="md-nav__title" for="__nav_5">
           <span class="md-nav__icon md-icon"></span>
           Getting Started
@@ -282,6 +338,7 @@
         <ul class="md-nav__list" data-md-scrollfix>
           
             
+              
   
   
   
@@ -292,8 +349,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -304,8 +363,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -316,8 +377,24 @@
     </li>
   
 
+            
           
             
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting-started/appmesh/" class="md-nav__link">
+        AWS App Mesh
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
   
   
   
@@ -328,8 +405,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -340,8 +419,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -352,6 +433,21 @@
     </li>
   
 
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting-started/mixed/" class="md-nav__link">
+        Multiple Providers
+      </a>
+    </li>
+  
+
+            
           
         </ul>
       </nav>
@@ -385,13 +481,18 @@
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" type="checkbox" id="__nav_7" >
       
-      <label class="md-nav__link" for="__nav_7">
-        Rollout
-        <span class="md-nav__icon md-icon"></span>
-      </label>
-      <nav class="md-nav" aria-label="Rollout" data-md-level="1">
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+          Rollout
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
         <label class="md-nav__title" for="__nav_7">
           <span class="md-nav__icon md-icon"></span>
           Rollout
@@ -399,6 +500,7 @@
         <ul class="md-nav__list" data-md-scrollfix>
           
             
+              
   
   
   
@@ -406,13 +508,18 @@
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7_1" type="checkbox" id="__nav_7_1" >
       
-      <label class="md-nav__link" for="__nav_7_1">
-        Deployment Strategies
-        <span class="md-nav__icon md-icon"></span>
-      </label>
-      <nav class="md-nav" aria-label="Deployment Strategies" data-md-level="2">
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_1" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_7_1" id="__nav_7_1_label" tabindex="0">
+          Deployment Strategies
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_1_label" aria-expanded="false">
         <label class="md-nav__title" for="__nav_7_1">
           <span class="md-nav__icon md-icon"></span>
           Deployment Strategies
@@ -420,6 +527,7 @@
         <ul class="md-nav__list" data-md-scrollfix>
           
             
+              
   
   
   
@@ -430,8 +538,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -442,14 +552,17 @@
     </li>
   
 
+            
           
         </ul>
       </nav>
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -460,8 +573,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -472,8 +587,24 @@
     </li>
   
 
+            
           
             
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../vpa-support/" class="md-nav__link">
+        VPA
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
   
   
   
@@ -484,8 +615,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -496,8 +629,38 @@
     </li>
   
 
+            
           
             
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../scaledown-aborted-rs/" class="md-nav__link">
+        Scaledown Aborted Rollouts
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../rollback/" class="md-nav__link">
+        Rollback Window
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
   
   
   
@@ -508,8 +671,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -520,8 +685,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -532,8 +699,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -544,6 +713,7 @@
     </li>
   
 
+            
           
         </ul>
       </nav>
@@ -564,13 +734,18 @@
     <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_8" type="checkbox" id="__nav_8" checked>
       
-      <label class="md-nav__link" for="__nav_8">
-        Traffic Management
-        <span class="md-nav__icon md-icon"></span>
-      </label>
-      <nav class="md-nav" aria-label="Traffic Management" data-md-level="1">
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" checked>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+          Traffic Management
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="true">
         <label class="md-nav__title" for="__nav_8">
           <span class="md-nav__icon md-icon"></span>
           Traffic Management
@@ -578,6 +753,7 @@
         <ul class="md-nav__list" data-md-scrollfix>
           
             
+              
   
   
     
@@ -585,7 +761,7 @@
   
     <li class="md-nav__item md-nav__item--active">
       
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
       
       
         
@@ -601,6 +777,7 @@
       </a>
       
         
+
 <nav class="md-nav md-nav--secondary" aria-label="Table of contents">
   
   
@@ -628,6 +805,66 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#traffic-routing-with-managed-routes-and-route-precedence" class="md-nav__link">
+    Traffic routing with managed routes and route precedence
+  </a>
+  
+    <nav class="md-nav" aria-label="Traffic routing with managed routes and route precedence">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#traffic-router-support-istio" class="md-nav__link">
+    Traffic router support: (Istio)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#traffic-routing-based-on-a-header-values-for-canary" class="md-nav__link">
+    Traffic routing based on a header values for Canary
+  </a>
+  
+    <nav class="md-nav" aria-label="Traffic routing based on a header values for Canary">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#traffic-router-support-istio_1" class="md-nav__link">
+    Traffic router support: (Istio)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#traffic-routing-mirroring-traffic-to-canary" class="md-nav__link">
+    Traffic routing mirroring traffic to canary
+  </a>
+  
+    <nav class="md-nav" aria-label="Traffic routing mirroring traffic to canary">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#traffic-router-support-istio_2" class="md-nav__link">
+    Traffic router support: (Istio)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -635,8 +872,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -647,8 +886,24 @@
     </li>
   
 
+            
           
             
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="apisix/" class="md-nav__link">
+        APISIX
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
   
   
   
@@ -659,8 +914,24 @@
     </li>
   
 
+            
           
             
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="google-cloud/" class="md-nav__link">
+        Google Cloud
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
   
   
   
@@ -671,8 +942,24 @@
     </li>
   
 
+            
           
             
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="kong/" class="md-nav__link">
+        Kong
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
   
   
   
@@ -683,8 +970,24 @@
     </li>
   
 
+            
           
             
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="plugins/" class="md-nav__link">
+        Plugins
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
   
   
   
@@ -695,6 +998,21 @@
     </li>
   
 
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="traefik/" class="md-nav__link">
+        Traefik
+      </a>
+    </li>
+  
+
+            
           
         </ul>
       </nav>
@@ -713,13 +1031,18 @@
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_9" type="checkbox" id="__nav_9" >
       
-      <label class="md-nav__link" for="__nav_9">
-        Analysis
-        <span class="md-nav__icon md-icon"></span>
-      </label>
-      <nav class="md-nav" aria-label="Analysis" data-md-level="1">
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="0">
+          Analysis
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
         <label class="md-nav__title" for="__nav_9">
           <span class="md-nav__icon md-icon"></span>
           Analysis
@@ -727,6 +1050,7 @@
         <ul class="md-nav__list" data-md-scrollfix>
           
             
+              
   
   
   
@@ -737,8 +1061,24 @@
     </li>
   
 
+            
           
             
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../analysis/plugins/" class="md-nav__link">
+        Plugins
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
   
   
   
@@ -749,20 +1089,24 @@
     </li>
   
 
+            
           
             
+              
   
   
   
     <li class="md-nav__item">
       <a href="../../analysis/datadog/" class="md-nav__link">
-        DataDog
+        Datadog
       </a>
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -773,8 +1117,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -785,8 +1131,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -797,8 +1145,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -809,8 +1159,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -821,6 +1173,63 @@
     </li>
   
 
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../analysis/cloudwatch/" class="md-nav__link">
+        CloudWatch
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../analysis/graphite/" class="md-nav__link">
+        Graphite
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../analysis/influxdb/" class="md-nav__link">
+        InfluxDB
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../analysis/skywalking/" class="md-nav__link">
+        Apache SkyWalking
+      </a>
+    </li>
+  
+
+            
           
         </ul>
       </nav>
@@ -854,13 +1263,18 @@
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_11" type="checkbox" id="__nav_11" >
       
-      <label class="md-nav__link" for="__nav_11">
-        Notifications
-        <span class="md-nav__icon md-icon"></span>
-      </label>
-      <nav class="md-nav" aria-label="Notifications" data-md-level="1">
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_11" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_11" id="__nav_11_label" tabindex="0">
+          Notifications
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_11_label" aria-expanded="false">
         <label class="md-nav__title" for="__nav_11">
           <span class="md-nav__icon md-icon"></span>
           Notifications
@@ -868,6 +1282,7 @@
         <ul class="md-nav__list" data-md-scrollfix>
           
             
+              
   
   
   
@@ -878,8 +1293,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -887,13 +1304,18 @@
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_11_2" type="checkbox" id="__nav_11_2" >
       
-      <label class="md-nav__link" for="__nav_11_2">
-        Services
-        <span class="md-nav__icon md-icon"></span>
-      </label>
-      <nav class="md-nav" aria-label="Services" data-md-level="2">
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_11_2" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_11_2" id="__nav_11_2_label" tabindex="0">
+          Services
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_11_2_label" aria-expanded="false">
         <label class="md-nav__title" for="__nav_11_2">
           <span class="md-nav__icon md-icon"></span>
           Services
@@ -901,6 +1323,21 @@
         <ul class="md-nav__list" data-md-scrollfix>
           
             
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../generated/notification-services/alertmanager/" class="md-nav__link">
+        Alertmanager
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
   
   
   
@@ -911,8 +1348,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -923,8 +1362,24 @@
     </li>
   
 
+            
           
             
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../generated/notification-services/googlechat/" class="md-nav__link">
+        Google Chat
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
   
   
   
@@ -935,8 +1390,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -947,8 +1404,24 @@
     </li>
   
 
+            
           
             
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../generated/notification-services/newrelic/" class="md-nav__link">
+        NewRelic
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
   
   
   
@@ -959,8 +1432,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -971,8 +1446,38 @@
     </li>
   
 
+            
           
             
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../generated/notification-services/pagerduty/" class="md-nav__link">
+        Pagerduty
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../generated/notification-services/pushover/" class="md-nav__link">
+        Pushover
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
   
   
   
@@ -983,8 +1488,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -995,8 +1502,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -1007,8 +1516,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -1019,8 +1530,24 @@
     </li>
   
 
+            
           
             
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../generated/notification-services/webex/" class="md-nav__link">
+        Webex Teams
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
   
   
   
@@ -1031,12 +1558,14 @@
     </li>
   
 
+            
           
         </ul>
       </nav>
     </li>
   
 
+            
           
         </ul>
       </nav>
@@ -1055,13 +1584,18 @@
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_12" type="checkbox" id="__nav_12" >
       
-      <label class="md-nav__link" for="__nav_12">
-        Kubectl Plugin
-        <span class="md-nav__icon md-icon"></span>
-      </label>
-      <nav class="md-nav" aria-label="Kubectl Plugin" data-md-level="1">
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_12" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_12" id="__nav_12_label" tabindex="0">
+          Kubectl Plugin
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_12_label" aria-expanded="false">
         <label class="md-nav__title" for="__nav_12">
           <span class="md-nav__icon md-icon"></span>
           Kubectl Plugin
@@ -1069,6 +1603,7 @@
         <ul class="md-nav__list" data-md-scrollfix>
           
             
+              
   
   
   
@@ -1079,8 +1614,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -1088,13 +1625,18 @@
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_12_2" type="checkbox" id="__nav_12_2" >
       
-      <label class="md-nav__link" for="__nav_12_2">
-        Commands
-        <span class="md-nav__icon md-icon"></span>
-      </label>
-      <nav class="md-nav" aria-label="Commands" data-md-level="2">
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_12_2" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_12_2" id="__nav_12_2_label" tabindex="0">
+          Commands
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_12_2_label" aria-expanded="false">
         <label class="md-nav__title" for="__nav_12_2">
           <span class="md-nav__icon md-icon"></span>
           Commands
@@ -1102,6 +1644,7 @@
         <ul class="md-nav__list" data-md-scrollfix>
           
             
+              
   
   
   
@@ -1112,8 +1655,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -1124,8 +1669,24 @@
     </li>
   
 
+            
           
             
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../generated/kubectl-argo-rollouts/kubectl-argo-rollouts_completion/" class="md-nav__link">
+        Rollouts Completion
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
   
   
   
@@ -1136,8 +1697,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -1148,8 +1711,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -1160,8 +1725,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -1172,8 +1739,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -1184,8 +1753,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -1196,8 +1767,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -1208,8 +1781,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -1220,8 +1795,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -1232,8 +1809,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -1244,8 +1823,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -1256,8 +1837,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -1268,8 +1851,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -1280,8 +1865,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -1292,8 +1879,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -1304,8 +1893,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -1316,8 +1907,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -1328,8 +1921,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -1340,8 +1935,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -1352,8 +1949,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -1364,8 +1963,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -1376,8 +1977,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -1388,8 +1991,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -1400,8 +2005,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -1412,8 +2019,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -1424,8 +2033,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -1436,8 +2047,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -1448,8 +2061,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -1460,8 +2075,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -1472,8 +2089,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -1484,8 +2103,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -1496,12 +2117,14 @@
     </li>
   
 
+            
           
         </ul>
       </nav>
     </li>
   
 
+            
           
         </ul>
       </nav>
@@ -1561,10 +2184,58 @@
   
   
   
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_16" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_16" id="__nav_16_label" tabindex="0">
+          Security
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_16_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_16">
+          <span class="md-nav__icon md-icon"></span>
+          Security
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
     <li class="md-nav__item">
-      <a href="../../security/" class="md-nav__link">
-        Security
+      <a href="../../security/security/" class="md-nav__link">
+        Security Policy
       </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../security/signed-release-assets/" class="md-nav__link">
+        Verify Release Artifacts
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
     </li>
   
 
@@ -1578,7 +2249,7 @@
   
     <li class="md-nav__item">
       <a href="../../roadmap/" class="md-nav__link">
-        Roadmap
+        Roadmap/Release Schedule
       </a>
     </li>
   
@@ -1595,13 +2266,18 @@
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_18" type="checkbox" id="__nav_18" >
       
-      <label class="md-nav__link" for="__nav_18">
-        Contributing
-        <span class="md-nav__icon md-icon"></span>
-      </label>
-      <nav class="md-nav" aria-label="Contributing" data-md-level="1">
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_18" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_18" id="__nav_18_label" tabindex="0">
+          Contributing
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_18_label" aria-expanded="false">
         <label class="md-nav__title" for="__nav_18">
           <span class="md-nav__icon md-icon"></span>
           Contributing
@@ -1609,6 +2285,7 @@
         <ul class="md-nav__list" data-md-scrollfix>
           
             
+              
   
   
   
@@ -1619,8 +2296,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -1631,8 +2310,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -1643,6 +2324,21 @@
     </li>
   
 
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../plugins/" class="md-nav__link">
+        Plugins
+      </a>
+    </li>
+  
+
+            
           
         </ul>
       </nav>
@@ -1707,6 +2403,7 @@
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
                     
+
 <nav class="md-nav md-nav--secondary" aria-label="Table of contents">
   
   
@@ -1734,6 +2431,66 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#traffic-routing-with-managed-routes-and-route-precedence" class="md-nav__link">
+    Traffic routing with managed routes and route precedence
+  </a>
+  
+    <nav class="md-nav" aria-label="Traffic routing with managed routes and route precedence">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#traffic-router-support-istio" class="md-nav__link">
+    Traffic router support: (Istio)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#traffic-routing-based-on-a-header-values-for-canary" class="md-nav__link">
+    Traffic routing based on a header values for Canary
+  </a>
+  
+    <nav class="md-nav" aria-label="Traffic routing based on a header values for Canary">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#traffic-router-support-istio_1" class="md-nav__link">
+    Traffic router support: (Istio)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#traffic-routing-mirroring-traffic-to-canary" class="md-nav__link">
+    Traffic routing mirroring traffic to canary
+  </a>
+  
+    <nav class="md-nav" aria-label="Traffic routing mirroring traffic to canary">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#traffic-router-support-istio_2" class="md-nav__link">
+    Traffic router support: (Istio)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1742,16 +2499,17 @@
               </div>
             
           
-          <div class="md-content" data-md-component="content">
-            <article class="md-content__inner md-typeset">
-              
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
                 
-                  <a href="https://github.com/argoproj/argo-rollouts/edit/master/docs/features/traffic-management/index.md" title="Edit this page" class="md-content__button md-icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
-                  </a>
-                
-                
-                <h1 id="traffic-management">Traffic management<a class="headerlink" href="#traffic-management" title="Permanent link">&para;</a></h1>
+                  
+
+  
+  
+
+
+<h1 id="traffic-management">Traffic management<a class="headerlink" href="#traffic-management" title="Permanent link">&para;</a></h1>
 <p>Traffic management is controlling the data plane to have intelligent routing rules for an application. These routing rules can manipulate the flow of traffic to different versions of an application enabling Progressive Delivery. These controls limit the blast radius of a new release by ensuring a small percentage of users receive a new version while it is verified.</p>
 <p>There are various techniques to achieve traffic management:</p>
 <ul>
@@ -1763,30 +2521,147 @@
 <p>The core Kubernetes objects do not have fine-grained tools needed to fulfill all the requirements of traffic management. At most, Kubernetes offers native load balancing capabilities through the Service object by offering an endpoint that routes traffic to a grouping of pods based on that Service's selector. Functionality like traffic mirroring or routing by headers is not possible with the default core Service object, and the only way to control the percentage of traffic to different versions of an application is by manipulating replica counts of those versions. </p>
 <p>Service Meshes fill this missing functionality in Kubernetes. They introduce new concepts and functionality to control the data plane through the use of CRDs and other core Kubernetes resources. </p>
 <h2 id="how-does-argo-rollouts-enable-traffic-management">How does Argo Rollouts enable traffic management?<a class="headerlink" href="#how-does-argo-rollouts-enable-traffic-management" title="Permanent link">&para;</a></h2>
-<p>Argo Rollouts enables traffic management by manipulating the Service Mesh resources to match the intent of the Rollout. Argo Rollouts currently supports the following service meshes:</p>
+<p>Argo Rollouts enables traffic management by manipulating the Service Mesh resources to match the intent of the Rollout. Argo Rollouts currently supports the following traffic providers:</p>
 <ul>
 <li><a href="alb/">AWS ALB Ingress Controller</a></li>
 <li><a href="ambassador/">Ambassador Edge Stack</a></li>
+<li><a href="apisix/">Apache APISIX</a></li>
+<li><a href="google-cloud/">Google Cloud</a></li>
+<li><a href="plugins/">Gateway API</a></li>
 <li><a href="istio/">Istio</a></li>
+<li><a href="kong/">Kong Ingress</a></li>
 <li><a href="nginx/">Nginx Ingress Controller</a></li>
 <li><a href="smi/">Service Mesh Interface (SMI)</a></li>
+<li><a href="traefik/">Traefik Proxy</a></li>
+<li><a href="mixed/">Multiple Providers</a></li>
 <li>File a ticket <a href="https://github.com/argoproj/argo-rollouts/issues">here</a> if you would like another implementation (or thumbs up it if that issue already exists)</li>
 </ul>
 <p>Regardless of the Service Mesh used, the Rollout object has to set a canary Service and a stable Service in its spec. Here is an example with those fields set:
-<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">argoproj.io/v1alpha1</span>
-<span class="nt">kind</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Rollout</span>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">argoproj.io/v1alpha1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Rollout</span>
 <span class="nt">spec</span><span class="p">:</span>
-  <span class="l l-Scalar l-Scalar-Plain">...</span>
-  <span class="l l-Scalar l-Scalar-Plain">strategy</span><span class="p p-Indicator">:</span>
-    <span class="nt">canary</span><span class="p">:</span>
-      <span class="nt">canaryService</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">canary-service</span>
-      <span class="nt">stableService</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">stable-service</span>
-      <span class="nt">trafficRouting</span><span class="p">:</span>
-       <span class="l l-Scalar l-Scalar-Plain">...</span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">...</span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">strategy</span><span class="p p-Indicator">:</span>
+<span class="w">    </span><span class="nt">canary</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">canaryService</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">canary-service</span>
+<span class="w">      </span><span class="nt">stableService</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">stable-service</span>
+<span class="w">      </span><span class="nt">trafficRouting</span><span class="p">:</span>
+<span class="w">       </span><span class="l l-Scalar l-Scalar-Plain">...</span>
 </code></pre></div></p>
 <p>The controller modifies these Services to route traffic to the appropriate canary and stable ReplicaSets as the Rollout progresses. These Services are used by the Service Mesh to define what group of pods should receive the canary and stable traffic.</p>
 <p>Additionally, the Argo Rollouts controller needs to treat the Rollout object differently when using traffic management. In particular, the Stable ReplicaSet owned by the Rollout remains fully scaled up as the Rollout progresses through the Canary steps.</p>
 <p>Since the traffic is controlled independently by the Service Mesh resources, the controller needs to make a best effort to ensure that the Stable and New ReplicaSets are not overwhelmed by the traffic sent to them. By leaving the Stable ReplicaSet scaled up, the controller is ensuring that the Stable ReplicaSet can handle 100% of the traffic at any time<sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup>. The New ReplicaSet follows the same behavior as without traffic management. The new ReplicaSet's replica count is equal to the latest SetWeight step percentage multiple by the total replica count of the Rollout. This calculation ensures that the canary version does not receive more traffic than it can handle.</p>
+<h2 id="traffic-routing-with-managed-routes-and-route-precedence">Traffic routing with managed routes and route precedence<a class="headerlink" href="#traffic-routing-with-managed-routes-and-route-precedence" title="Permanent link">&para;</a></h2>
+<h5 id="traffic-router-support-istio">Traffic router support: (Istio)<a class="headerlink" href="#traffic-router-support-istio" title="Permanent link">&para;</a></h5>
+<p>When traffic routing is enabled, you have the ability to also let argo rollouts add and manage other routes besides just
+controlling the traffic weight to the canary. Two such routing rules are header and mirror based routes. When using these
+routes we also have to set a route precedence with the upstream traffic router. We do this using the <code>spec.strategy.canary.trafficRouting.managedRoutes</code>
+field which is an array the order of the items in the array determine the precedence. This set of routes will also be placed
+in the order specified on top of any other routes defined manually. </p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>All routes listed in managed routes will be removed at the end of a rollout or on an abort. Do not put any manually created routes in the list.</p>
+</div>
+<p>Here is an example:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">argoproj.io/v1alpha1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Rollout</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">...</span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">strategy</span><span class="p p-Indicator">:</span>
+<span class="w">    </span><span class="nt">canary</span><span class="p">:</span>
+<span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">...</span>
+<span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">trafficRouting</span><span class="p p-Indicator">:</span>
+<span class="w">        </span><span class="nt">managedRoutes</span><span class="p">:</span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">priority-route-1</span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">priority-route-2</span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">priority-route-3</span>
+</code></pre></div>
+<h2 id="traffic-routing-based-on-a-header-values-for-canary">Traffic routing based on a header values for Canary<a class="headerlink" href="#traffic-routing-based-on-a-header-values-for-canary" title="Permanent link">&para;</a></h2>
+<h5 id="traffic-router-support-istio_1">Traffic router support: (Istio)<a class="headerlink" href="#traffic-router-support-istio_1" title="Permanent link">&para;</a></h5>
+<p>Argo Rollouts has ability to send all traffic to the canary-service based on a http request header value.
+The step for the header based traffic routing is <code>setHeaderRoute</code> and has a list of matchers for the header. </p>
+<p><code>name</code> - name of the header route.</p>
+<p><code>match</code> - header matching rules is an array of <code>headerName, headerValue</code> pairs.</p>
+<p><code>headerName</code> - name of the header to match.</p>
+<p><code>headerValue</code>-  contains exactly one of <code>exact</code> - specify the exact header value, 
+<code>regex</code> - value in a regex format, <code>prefix</code> - the prefix of the value could be provided. Not all traffic routers will support
+all match types.</p>
+<p>To disable header based traffic routing just need to specify empty <code>setHeaderRoute</code> with only the name of the route.</p>
+<p>Example:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">argoproj.io/v1alpha1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Rollout</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">...</span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">strategy</span><span class="p p-Indicator">:</span>
+<span class="w">    </span><span class="nt">canary</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">canaryService</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">canary-service</span>
+<span class="w">      </span><span class="nt">stableService</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">stable-service</span>
+<span class="w">      </span><span class="nt">trafficRouting</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">managedRoutes</span><span class="p">:</span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">set-header-1</span>
+<span class="w">        </span><span class="nt">istio</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">virtualService</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">rollouts-demo-vsvc</span>
+<span class="w">      </span><span class="nt">steps</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">setWeight</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">20</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">setHeaderRoute</span><span class="p">:</span><span class="w"> </span><span class="c1"># enable header based traffic routing where</span>
+<span class="w">          </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;set-header-1&quot;</span>
+<span class="w">          </span><span class="nt">match</span><span class="p">:</span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">headerName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Custom-Header1</span><span class="w"> </span><span class="c1"># Custom-Header1=Mozilla</span>
+<span class="w">            </span><span class="nt">headerValue</span><span class="p">:</span>
+<span class="w">              </span><span class="nt">exact</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Mozilla</span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">headerName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Custom-Header2</span><span class="w"> </span><span class="c1"># or Custom-Header2 has a prefix Mozilla</span>
+<span class="w">            </span><span class="nt">headerValue</span><span class="p">:</span>
+<span class="w">              </span><span class="nt">prefix</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Mozilla</span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">headerName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Custom-Header3</span><span class="w"> </span><span class="c1"># or Custom-Header3 value match regex: Mozilla(.*)</span>
+<span class="w">            </span><span class="nt">headerValue</span><span class="p">:</span>
+<span class="w">              </span><span class="nt">regex</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Mozilla(.*)</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">pause</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">setHeaderRoute</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;set-header-1&quot;</span><span class="w"> </span><span class="c1"># disable header based traffic routing</span>
+</code></pre></div>
+<h2 id="traffic-routing-mirroring-traffic-to-canary">Traffic routing mirroring traffic to canary<a class="headerlink" href="#traffic-routing-mirroring-traffic-to-canary" title="Permanent link">&para;</a></h2>
+<h5 id="traffic-router-support-istio_2">Traffic router support: (Istio)<a class="headerlink" href="#traffic-router-support-istio_2" title="Permanent link">&para;</a></h5>
+<p>Argo Rollouts has ability to mirror traffic to the canary-service based on a various matching rules.
+The step for the mirror based traffic routing is <code>setMirrorRoute</code> and has a list of matchers for the header.</p>
+<p><code>name</code> - name of the mirror route.</p>
+<p><code>percentage</code> - what percentage of the matched traffic to mirror</p>
+<p><code>match</code> - The matching rules for the header route, if this is missing it acts as a removal of the route.
+All conditions inside a single match block have AND semantics, while the list of match blocks have OR semantics.
+Each type within a match (method, path, headers) must have one and only one match type (exact, regex, prefix)
+Not all match types (exact, regex, prefix) will be supported by all traffic routers.</p>
+<p>To disable mirror based traffic route you just need to specify a <code>setMirrorRoute</code> with only the name of the route.</p>
+<p>This example will mirror 35% of HTTP traffic that matches a <code>GET</code> requests and with the url prefix of <code>/</code>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">argoproj.io/v1alpha1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Rollout</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">...</span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">strategy</span><span class="p p-Indicator">:</span>
+<span class="w">    </span><span class="nt">canary</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">canaryService</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">canary-service</span>
+<span class="w">      </span><span class="nt">stableService</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">stable-service</span>
+<span class="w">      </span><span class="nt">trafficRouting</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">managedRoutes</span><span class="p">:</span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mirror-route</span>
+<span class="w">        </span><span class="nt">istio</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">virtualService</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">rollouts-demo-vsvc</span>
+<span class="w">      </span><span class="nt">steps</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">setCanaryScale</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">weight</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">25</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">setMirrorRoute</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mirror-route</span>
+<span class="w">          </span><span class="nt">percentage</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">35</span>
+<span class="w">          </span><span class="nt">match</span><span class="p">:</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">method</span><span class="p">:</span>
+<span class="w">                </span><span class="nt">exact</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">GET</span>
+<span class="w">              </span><span class="nt">path</span><span class="p">:</span>
+<span class="w">                </span><span class="nt">prefix</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">pause</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">duration</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10m</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">setMirrorRoute</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;mirror-route&quot;</span><span class="w"> </span><span class="c1"># removes mirror based traffic route</span>
+</code></pre></div></p>
 <div class="footnote">
 <hr />
 <ol>
@@ -1795,67 +2670,35 @@
 </li>
 </ol>
 </div>
-                
-              
-              
-                
 
 
-              
-            </article>
-          </div>
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
         </div>
         
       </main>
       
-        
-<footer class="md-footer">
-  
-    <nav class="md-footer__inner md-grid" aria-label="Footer">
-      
-        
-        <a href="../controller-metrics/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Controller Metrics" rel="prev">
-          <div class="md-footer__button md-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
-          </div>
-          <div class="md-footer__title">
-            <div class="md-ellipsis">
-              <span class="md-footer__direction">
-                Previous
-              </span>
-              Controller Metrics
-            </div>
-          </div>
-        </a>
-      
-      
-        
-        <a href="ambassador/" class="md-footer__link md-footer__link--next" aria-label="Next: Ambassador" rel="next">
-          <div class="md-footer__title">
-            <div class="md-ellipsis">
-              <span class="md-footer__direction">
-                Next
-              </span>
-              Ambassador
-            </div>
-          </div>
-          <div class="md-footer__button md-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
-          </div>
-        </a>
-      
-    </nav>
+        <footer class="md-footer">
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
-      <div class="md-footer-copyright">
-        
-        Made with
-        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
-          Material for MkDocs
-        </a>
-        
-      </div>
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
       
     </div>
   </div>
@@ -1865,10 +2708,15 @@
     <div class="md-dialog" data-md-component="dialog">
       <div class="md-dialog__inner md-typeset"></div>
     </div>
-    <script id="__config" type="application/json">{"base": "../..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../assets/javascripts/workers/search.409db549.min.js", "version": null}</script>
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.74e28a9f.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.756773cc.min.js"></script>
+      <script src="../../assets/javascripts/bundle.220ee61c.min.js"></script>
+      
+        
+          <script src="../../assets/versions.js"></script>
+        
       
     
   </body>
